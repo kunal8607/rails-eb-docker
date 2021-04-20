@@ -3,12 +3,11 @@
   "containerDefinitions": [
     {
       "name": "app",
-      "image": "rails-eb-docker_app:latest",
+      "image": "516226231905.dkr.ecr.us-west-2.amazonaws.com/rails-eb-docker_app:latest",
       "hostname": "app",
       "essential": true,
       "memory": 512,
       "Update": "true",
-      "privileged": "true",
       "mountPoints": [
         { 
           "sourceVolume": "awseb-logs-app",
@@ -18,9 +17,10 @@
     },
     {
       "name": "web",
-      "image": "rails-eb-docker_web:latest",
+      "image": "516226231905.dkr.ecr.us-west-2.amazonaws.com/rails-eb-docker_web:latest",
       "hostname": "web",
       "essential": false,
+      "privileged": "true",
       "portMappings": [
         {
           "hostPort": 80,
