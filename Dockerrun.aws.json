@@ -1,0 +1,52 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "essential": true,
+      "image": "postgres",
+      "name": "db",
+      "environment": [
+        {
+          "name": "POSTGRES_PASSWORD",
+          "value": "postgres"
+        }
+      ]
+  },
+    {
+      "name": "app",
+      "image": "rails-eb-docker_app:latest",
+      "hostname": "app",
+      "essential": true,
+      "memory": 750,
+      "Update": "true",
+      "privileged": "true",
+      "mountPoints": [
+        { 
+          "sourceVolume": "awseb-logs-app",
+          "containerPath": "/var/www/rails-eb-docker_app/log"
+        }
+      ]
+    },
+    {
+      "name": "web",
+      "image": "rails-eb-docker_web:latest",
+      "hostname": "web",
+      "essential": false,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["app"],
+      "memory": 128,
+      "Update": "true",
+      "mountPoints": [
+        { 
+          "sourceVolume": "awseb-logs-web",
+          "containerPath": "/var/www/rails-eb-docker_app/log"
+        }
+      ]
+    }
+  ]
+}
