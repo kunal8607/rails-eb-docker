@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "app",
-      "image": "516226231905.dkr.ecr.us-west-2.amazonaws.com/rails-eb-docker_app:latest",
+      "image": "public.ecr.aws/a0m7d9y1/rails-eb-docker_app:latest",
       "hostname": "app",
       "essential": true,
       "memory": 512,
@@ -17,7 +17,7 @@
     },
     {
       "name": "web",
-      "image": "516226231905.dkr.ecr.us-west-2.amazonaws.com/rails-eb-docker_web:latest",
+      "image": "public.ecr.aws/a0m7d9y1/rails-eb-docker_web:latest",
       "hostname": "web",
       "essential": false,
       "privileged": "true",
